@@ -1,0 +1,67 @@
+services:
+
+  app:
+    image: ninja7s/pinpointx-app:v1.0
+    container_name: iot-pentest-app
+    ports:
+      - "5050:5050"
+    volumes:
+      # Upload dirs — firmware files written here by container must be
+      # readable by emba_service.py on the host via _translate_container_path.
+      # emba_service.py translates /app/uploads/firmware/ → host EMBA_FIRMWARE_DIR,
+      # so this mount and EMBA_FIRMWARE_DIR in .env must point to the same place.
+      - ./uploads:/app/uploads
+
+      # EMBA log dirs — container reads these to serve partial scan results.
+      # Host emba_service.py writes into EMBA_LOG_DIR / EMBA_DIFF_LOG_DIR.
+      # The paths below must match what is set in .env.
+      - ${EMBA_LOG_DIR}:/app/logs/emba
+      - ${EMBA_DIFF_LOG_DIR}:/app/logs/emba_diff
+
+      # Templates — mount allows UI changes without image rebuild
+      - ./templates:/app/templates:ro
+
+      # EasyOCR model cache — persisted across container restarts
+      - easyocr_models:/root/.EasyOCR
+
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+    environment:
+      FLASK_ENV: production
+      EMBA_SERVICE_URL: http://host.docker.internal:5002
+      LOG_LEVEL: DEBUG
+      # These tell app.py where EMBA logs live on the HOST filesystem
+      # (used to build report download URLs shown to the user).
+      HOST_EMBA_LOG_BASE: ${EMBA_LOG_DIR}
+      HOST_EMBA_DIFF_LOG_BASE: ${EMBA_DIFF_LOG_DIR}
+      # LLM / vision model config
+      OLLAMA_HOST: ${OLLAMA_HOST}
+      OLLAMA_MODEL: ${OLLAMA_MODEL}
+      OLLAMA_TEXT_MODEL: ${OLLAMA_TEXT_MODEL}
+      OLLAMA_CHAT_MODEL: ${OLLAMA_CHAT_MODEL}
+      OLLAMA_TEXT_API_BASE: ${OLLAMA_TEXT_API_BASE}
+      OLLAMA_TIMEOUT_SEC: ${OLLAMA_TIMEOUT_SEC}
+      OLLAMA_TEXT_TIMEOUT_SEC: ${OLLAMA_TEXT_TIMEOUT_SEC}
+      # PCB pipeline config
+      PCB_USE_VLM_HINTS: ${PCB_USE_VLM_HINTS}
+      PCB_PREFILTER_REJECT_THRESHOLD: ${PCB_PREFILTER_REJECT_THRESHOLD}
+      PCB_PREFILTER_PASS_THRESHOLD: ${PCB_PREFILTER_PASS_THRESHOLD}
+      PCB_OCR_FALLBACK_THRESHOLD: ${PCB_OCR_FALLBACK_THRESHOLD}
+      PCB_CLIP_MODEL_ID: ${PCB_CLIP_MODEL_ID}
+      PCB_OCR_LANGS: ${PCB_OCR_LANGS}
+      # HuggingFace vision (optional, takes priority over Ollama for vision)
+      HUGGINGFACE_API_URL: ${HUGGINGFACE_API_URL}
+      HUGGINGFACE_API_KEY: ${HUGGINGFACE_API_KEY}
+      HUGGINGFACE_MODEL: ${HUGGINGFACE_MODEL}
+
+    restart: unless-stopped
+    networks:
+      - pentest-net
+
+networks:
+  pentest-net:
+    driver: bridge
+
+volumes:
+  easyocr_models:
