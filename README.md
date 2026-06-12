@@ -180,3 +180,14 @@ Issues, PRs, and feedback welcome. If you find a bug or want to suggest a featur
 ## ⚠️ Disclaimer
 
 PinPointX is intended for authorised security research, penetration testing, and educational use only. Always obtain explicit permission before analysing any hardware or firmware you do not own. The authors accept no liability for misuse.
+
+---
+## 📹 Demo
+
+
+
+https://github.com/user-attachments/assets/cd8217d0-ab93-462e-b368-d1f040f97f7b
+
+
+
+
