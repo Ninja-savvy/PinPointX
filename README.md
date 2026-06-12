@@ -132,8 +132,8 @@ PCB_OCR_LANGS=en
 |---|---|
 | **Firmware Analysis** | EMBA-powered deep scan — CVEs, hardcoded creds, vulnerable components |
 | **Firmware Diff** | Side-by-side version comparison — spots new vulnerabilities between releases |
-| **PCB Image Analysis** | Multi-stage pipeline: CLIP prefilter → VLM detection → OCR → chip intel lookup |
-| **Schematic / Artifact Analysis** | Two-stage VLM pipeline reads schematics and cross-references component data |
+| **PCB Image Analysis** | Multi-stage pipeline |
+| **Schematic / Artifact Analysis** | Reads schematics and cross-references component data |
 | **Tool Intelligence** | Name or photograph any hardware pentesting tool — get full profile and usage guide |
 | **Component Lookup** | Part-number search against live CVE, exploit, and EOL chip intelligence feeds |
 
@@ -141,21 +141,28 @@ PCB_OCR_LANGS=en
 
 ---
 
-## 🔧 EMBA Setup (Linux — firmware analysis only)
+## 🔧 EMBA Setup
 
 > **Optional prerequisite** — only needed for the Firmware Analysis and Firmware Diff features.
+
+EMBA runs on the **host machine** (not inside the container) because it requires direct system access to analyse firmware. The `emba_service.py` agent bridges the container and EMBA.
 
 **EMBA GitHub:** https://github.com/e-m-b-a/emba
 
 ```bash
-# Install EMBA
-git clone https://github.com/e-m-b-a/emba.git /opt/emba
-cd /opt/emba
+# Clone EMBA to any directory on your machine
+git clone https://github.com/e-m-b-a/emba.git /path/to/emba
+cd /path/to/emba
 sudo ./installer.sh -d
-
-# Set the path in your .env
-EMBA_PATH=/opt/emba
 ```
+
+Then point `EMBA_PATH` in your `.env` to that directory:
+
+```env
+EMBA_PATH=/path/to/emba
+```
+
+> The default fallback is `/opt/emba` if `EMBA_PATH` is not set in `.env`, but you can install EMBA anywhere — just make sure `EMBA_PATH` matches where you cloned it.
 
 ---
 
