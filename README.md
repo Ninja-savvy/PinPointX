@@ -34,7 +34,7 @@ Give it your firmware binaries, PCB images, or schematics and the AI engine maps
 - **Docker** and **Docker Compose v2** installed and running
 - **One LLM/Vision provider** configured — Ollama (local) or HuggingFace API
 - **Python 3** installed on the host (required for EMBA service on Linux)
-- **EMBA** *(Linux only, optional)* - only needed for firmware analysis. Install guide: **https://github.com/e-m-b-a/emba** — see [EMBA Setup](#-emba-setup-linux--firmware-analysis-only) below.
+- **EMBA** *(Linux only, optional)* - only needed for firmware analysis. Install guide: **https://github.com/e-m-b-a/emba** - see [EMBA Setup](#-emba-setup-linux--firmware-analysis-only) below.
 
 ---
 
