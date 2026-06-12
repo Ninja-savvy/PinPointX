@@ -4,20 +4,20 @@
 
 Give it your firmware binaries, PCB images, or schematics and the AI engine maps out critical components, debug interfaces, known CVEs, and potential attack paths — no manual grind required.
 
-> 🤝 **Built with:** [Pallavi](https://github.com/) and [Satyam](https://github.com/)
+> 🤝 **Built with:** Palalvi and Satyam
 
 ---
 
 ## ✨ Features
 
-- 🔍 **Multi-Source Ingestion** — Firmware binaries, PCB images, schematics, and hardware artifacts all in one place
-- 🤖 **AI Hardware Analysis** — Automatically identifies critical chips, SoCs, flash memory, debug headers, and component architecture
-- 🛡️ **Attack Path Mapping** — Discovers debug interfaces (UART, JTAG, SWD, SPI, I2C), entry points, and threat signals
-- 📦 **CVE Cross-Referencing** — Extracts component and software details from firmware to flag known CVEs and EOL parts
-- 🔬 **Firmware Diff Analysis** — Compares two firmware versions side-by-side to detect new vulnerabilities introduced between releases
-- 🧰 **Tool Intelligence** — Upload or name any hardware pentesting tool and get a full usage guide and attack methodology
-- 📄 **Actionable Reports** — Generates clear, downloadable HTML reports with prioritised findings and remediation steps
-- ⚡ **EMBA Integration** — Full EMBA firmware analysis pipeline built in (Linux only)
+- ✅ **Multi-Source Ingestion** — Firmware binaries, PCB images, schematics, and hardware artifacts all in one place
+- ✅ **AI Hardware Analysis** — Automatically identifies critical chips, SoCs, flash memory, debug headers, and component architecture
+- ✅ **Attack Path Mapping** — Discovers debug interfaces (UART, JTAG, SWD, SPI, I2C), entry points, and threat signals
+- ✅ **CVE Cross-Referencing** — Extracts component and software details from firmware to flag known CVEs and EOL parts
+- ✅ **Firmware Diff Analysis** — Compares two firmware versions side-by-side to detect new vulnerabilities introduced between releases
+- ✅ **Tool Intelligence** — Upload or name any hardware pentesting tool and get a full usage guide and attack methodology
+- ✅ **Actionable Reports** — Generates clear, downloadable HTML reports with prioritised findings and remediation steps
+- ✅ **EMBA Integration** — Full EMBA firmware analysis pipeline built in (Linux only)
 
 ---
 
@@ -101,7 +101,7 @@ HUGGINGFACE_MODEL=your-model-id
 
 # ── Text / Reasoning model (required) ────────────────────────────────────────
 # Used for security analysis, report generation, and schematic reasoning.
-OLLAMA_TEXT_MODEL=your-text-model        # e.g. llama3, mistral, gpt-oss
+OLLAMA_TEXT_MODEL=your-text-model        # e.g. mistral, gpt-oss
 OLLAMA_TEXT_API_BASE=http://host.docker.internal:11434
 OLLAMA_TIMEOUT_SEC=300
 OLLAMA_TEXT_TIMEOUT_SEC=300
@@ -112,7 +112,7 @@ EMBA_LOG_DIR=/path/to/pinpointx/emba_logs
 EMBA_DIFF_LOG_DIR=/path/to/pinpointx/emba_diff_logs
 EMBA_FIRMWARE_DIR=/path/to/pinpointx/uploads/firmware
 
-# ── PCB pipeline tuning (optional — defaults shown) ──────────────────────────
+# ── PCB pipeline tuning (optional) ──────────────────────────
 PCB_USE_VLM_HINTS=1
 PCB_PREFILTER_REJECT_THRESHOLD=0.40
 PCB_PREFILTER_PASS_THRESHOLD=0.70
@@ -123,27 +123,6 @@ PCB_OCR_LANGS=en
 
 ---
 
-## 🔄 How It Works
-
-```
-Upload Firmware / PCB Image / Schematic / Tool Image
-                      │
-                      ▼
-         Automated Parsing & Extraction
-    (binary analysis / image OCR / text signals)
-                      │
-                      ▼
-         AI Engine Analysis
-  (component ID · interface detection · CVE lookup)
-                      │
-                      ▼
-       Threat Modelling & Attack Path Generation
-    (UART/JTAG/SWD vectors · chip intel · risk rating)
-                      │
-                      ▼
-     Interactive Report Dashboard
-   (actionable findings · HTML export · remediation)
-```
 
 ---
 
@@ -160,22 +139,11 @@ Upload Firmware / PCB Image / Schematic / Tool Image
 
 ---
 
-## 🔌 LLM / Vision Provider Support
-
-| Provider | Type | Use case |
-|---|---|---|
-| **Ollama** | Local | 100% free, runs on your own GPU/CPU — best for sensitive firmware |
-| **HuggingFace** | Cloud | Vision model endpoint for PCB and schematic image analysis |
-
-> PinPointX uses separate endpoints for vision tasks (PCB/schematic image reading) and text tasks (security reasoning, report generation). These can be the same Ollama instance or different providers.
-
 ---
 
 ## 🔧 EMBA Setup (Linux — firmware analysis only)
 
 > **Optional prerequisite** — only needed for the Firmware Analysis and Firmware Diff features.
-
-EMBA runs on the **host machine** (not inside the container) because it requires direct system access to analyse firmware. The `emba_service.py` agent bridges the container and EMBA.
 
 **EMBA GitHub:** https://github.com/e-m-b-a/emba
 
@@ -191,44 +159,14 @@ EMBA_PATH=/opt/emba
 
 ---
 
-## 🐳 Docker Commands
-
-```bash
-# Start
-sudo ./startup.sh
-
-# Stop (Ctrl+C in the terminal running startup.sh, or:)
-docker compose down
-
-# View container logs
-docker compose logs -f
-
-# Update to a new release
-docker compose pull
-docker compose down
-sudo ./startup.sh
-```
-
 ---
 
 ## 🔒 Security & Privacy
 
 - Your firmware binaries, PCB images, and schematics **never leave your machine** unless you configure a cloud LLM provider
 - API keys are passed via your local `.env` file only — never baked into the Docker image
-- The Docker image contains only compiled modules — no Python source code is shipped
 
 ---
-
-## 📁 Project Structure (installer package)
-
-```
-PinPointX/
-├── startup.sh          # Linux/macOS launcher
-├── startup.bat         # Windows launcher
-├── emba_service.py     # EMBA bridge service (runs on host)
-├── docker-compose.yml  # App container definition
-└── .env.example        # Configuration template
-```
 
 ---
 
