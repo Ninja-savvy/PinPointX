@@ -10,20 +10,20 @@ Give it your firmware binaries, PCB images, or schematics and the AI engine maps
 
 ## ✨ Features
 
-- ✅ **Multi-Source Ingestion** — Firmware binaries, PCB images, schematics, and hardware artifacts all in one place
-- ✅ **AI Hardware Analysis** — Automatically identifies critical chips, SoCs, flash memory, debug headers, and component architecture
-- ✅ **Attack Path Mapping** — Discovers debug interfaces (UART, JTAG, SWD, SPI, I2C), entry points, and threat signals
-- ✅ **CVE Cross-Referencing** — Extracts component and software details from firmware to flag known CVEs and EOL parts
-- ✅ **Firmware Diff Analysis** — Compares two firmware versions side-by-side to detect new vulnerabilities introduced between releases
-- ✅ **Tool Intelligence** — Upload or name any hardware pentesting tool and get a full usage guide and attack methodology
-- ✅ **Actionable Reports** — Generates clear, downloadable HTML reports with prioritised findings and remediation steps
-- ✅ **EMBA Integration** — Full EMBA firmware analysis pipeline built in (Linux only)
+- ✅ **Multi-Source Ingestion** - Firmware binaries, PCB images, schematics, and hardware artifacts all in one place
+- ✅ **AI Hardware Analysis** - Automatically identifies critical chips, SoCs, flash memory, debug headers, and component architecture
+- ✅ **Attack Path Mapping** - Discovers debug interfaces (UART, JTAG, SWD, SPI, I2C), entry points, and threat signals
+- ✅ **CVE Cross-Referencing** - Extracts component and software details from firmware to flag known CVEs and EOL parts
+- ✅ **Firmware Diff Analysis** - Compares two firmware versions side-by-side to detect new vulnerabilities introduced between releases
+- ✅ **Tool Intelligence** - Upload or name any hardware pentesting tool and get a full usage guide and attack methodology
+- ✅ **Actionable Reports** - Generates clear, downloadable HTML reports with prioritised findings and remediation steps
+- ✅ **EMBA Integration** - Full EMBA firmware analysis pipeline built in (Linux only)
 
 ---
 
 ## 🗺️ Roadmap
 
-- 🎨 **Visual PCB Overlay** — Highlights exact components, test points, and debug interfaces directly on your uploaded PCB image so you know precisely where to probe
+- 🎨 **Visual PCB Overlay** - Highlights exact components, test points, and debug interfaces directly on your uploaded PCB image so you know precisely where to probe
 
 ---
 
@@ -34,7 +34,7 @@ Give it your firmware binaries, PCB images, or schematics and the AI engine maps
 - **Docker** and **Docker Compose v2** installed and running
 - **One LLM/Vision provider** configured — Ollama (local) or HuggingFace API
 - **Python 3** installed on the host (required for EMBA service on Linux)
-- **EMBA** *(Linux only, optional)* — only needed for firmware analysis. Install guide: **https://github.com/e-m-b-a/emba** — see [EMBA Setup](#-emba-setup-linux--firmware-analysis-only) below.
+- **EMBA** *(Linux only, optional)* - only needed for firmware analysis. Install guide: **https://github.com/e-m-b-a/emba** — see [EMBA Setup](#-emba-setup-linux--firmware-analysis-only) below.
 
 ---
 
@@ -127,11 +127,11 @@ PCB_OCR_LANGS=en
 
 | Module | What it does |
 |---|---|
-| **Firmware Analysis** | EMBA-powered deep scan — CVEs, hardcoded creds, vulnerable components |
-| **Firmware Diff** | Side-by-side version comparison — spots new vulnerabilities between releases |
+| **Firmware Analysis** | EMBA-powered deep scan - CVEs, hardcoded creds, vulnerable components |
+| **Firmware Diff** | Side-by-side version comparison - spots new vulnerabilities between releases |
 | **PCB Image Analysis** | Multi-stage pipeline |
 | **Schematic / Artifact Analysis** | Reads schematics and cross-references component data |
-| **Tool Intelligence** | Name or photograph any hardware pentesting tool — get full profile and usage guide |
+| **Tool Intelligence** | Name or photograph any hardware pentesting tool - get full profile and usage guide |
 | **Component Lookup** | Part-number search against live CVE, exploit, and EOL chip intelligence feeds |
 
 ---
@@ -166,7 +166,7 @@ EMBA_PATH=/path/to/emba
 ## 🔒 Security & Privacy
 
 - Your firmware binaries, PCB images, and schematics **never leave your machine** unless you configure a cloud LLM provider
-- API keys are passed via your local `.env` file only — never baked into the Docker image
+- API keys are passed via your local `.env` file only - never baked into the Docker image
 
 ---
 
