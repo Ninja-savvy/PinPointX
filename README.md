@@ -1,8 +1,8 @@
 # PinPointX 🎯
 
-**PinPointX** is an AI-powered security analysis platform built for IoT devices and embedded hardware. Getting a clear picture of hardware security can feel like a massive puzzle — PinPointX puts those pieces together automatically.
+**PinPointX** is an AI-powered security analysis platform built for IoT devices and embedded hardware. Getting a clear picture of hardware security can feel like a massive puzzle - PinPointX puts those pieces together automatically.
 
-Give it your firmware binaries, PCB images, or schematics and the AI engine maps out critical components, debug interfaces, known CVEs, and potential attack paths — no manual grind required.
+Give it your firmware binaries, PCB images, or schematics and the AI engine maps out critical components, debug interfaces, known CVEs, and potential attack paths - no manual grind required.
 
 > 🤝 **Built with:** Palalvi and Satyam
 
