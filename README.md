@@ -89,24 +89,22 @@ All settings live in a single `.env` file. Copy `.env.example` and fill in the v
 
 ```env
 # ── Vision / LLM (required) ───────────────────────────────────────────────────
-# Used for PCB image analysis, schematic reading, and tool identification.
 # Option A: Ollama (local, free)
 OLLAMA_HOST=http://host.docker.internal:11434
 OLLAMA_MODEL=your-vision-model           # e.g. qwen2-vl, llava
 
-# Option B: HuggingFace (cloud vision)
+# Option B: HuggingFace 
 HUGGINGFACE_API_URL=https://api-inference.huggingface.co
 HUGGINGFACE_API_KEY=hf-...
 HUGGINGFACE_MODEL=your-model-id
 
 # ── Text / Reasoning model (required) ────────────────────────────────────────
-# Used for security analysis, report generation, and schematic reasoning.
 OLLAMA_TEXT_MODEL=your-text-model        # e.g. mistral, gpt-oss
 OLLAMA_TEXT_API_BASE=http://host.docker.internal:11434
 OLLAMA_TIMEOUT_SEC=300
 OLLAMA_TEXT_TIMEOUT_SEC=300
 
-# ── EMBA paths (Linux only — required for firmware analysis) ──────────────────
+# ── EMBA paths (Linux only - optional) ──────────────────
 EMBA_PATH=/opt/emba
 EMBA_LOG_DIR=/path/to/pinpointx/emba_logs
 EMBA_DIFF_LOG_DIR=/path/to/pinpointx/emba_diff_logs
