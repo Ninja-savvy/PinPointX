@@ -23,7 +23,7 @@ Give it your firmware binaries, PCB images, or schematics and the AI engine maps
 
 ## 🗺️ Roadmap
 
-- 🎨 **Visual PCB Overlay** - Highlights exact components, test points, and debug interfaces directly on your uploaded PCB image so you know precisely where to probe
+-  **Visual PCB Overlay** - Highlights exact components, test points, and debug interfaces directly on your uploaded PCB image so you know precisely where to probe
 
 ---
 
