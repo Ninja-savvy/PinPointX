@@ -124,7 +124,6 @@ PCB_OCR_LANGS=en
 ---
 
 
----
 
 ## 🧩 Analysis Modules
 
@@ -139,7 +138,6 @@ PCB_OCR_LANGS=en
 
 ---
 
----
 
 ## 🔧 EMBA Setup
 
@@ -166,7 +164,6 @@ EMBA_PATH=/path/to/emba
 
 ---
 
----
 
 ## 🔒 Security & Privacy
 
@@ -175,7 +172,6 @@ EMBA_PATH=/path/to/emba
 
 ---
 
----
 
 ## 🤝 Contributing
 
