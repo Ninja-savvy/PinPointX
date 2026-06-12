@@ -4,7 +4,7 @@
 
 Give it your firmware binaries, PCB images, or schematics and the AI engine maps out critical components, debug interfaces, known CVEs, and potential attack paths - no manual grind required.
 
-> 🤝 **Built with:** Palalvi and Satyam
+> 🤝 **Built with:** Palalvi and Satyam Singh
 
 ---
 
